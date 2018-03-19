@@ -4,7 +4,7 @@ import './countdown.css';
 export default class CountdownContainer extends React.Component {
   constructor() {
 		super();
-    this.graduationDate = new Date('May 17, 2018 23:30:00');
+    this.graduationDate = new Date('May 17, 2018 24:30:00');
     this.state = {
 			timeLeft: {
 				days: 0,
