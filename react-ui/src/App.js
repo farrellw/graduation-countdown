@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import CountdownContainer from "./components/CountdownContainer.jsx";
+import Encouragement from './components/Encouragement.jsx';
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
           <h1 className="App-title">Brown School Graduation 2018</h1>
         </header>
         <CountdownContainer />
+        <Encouragement />
       </div>
     );
   }

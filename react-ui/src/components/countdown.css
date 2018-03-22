@@ -54,8 +54,8 @@ body{
 }
 
 .holder {
-	max-width: 25%;
-	min-width: 75px;
+	max-width: 140px;
+	min-width: 80px;
 	height: 25%;
 	display: inline-block;
 }

@@ -45,22 +45,22 @@ export default class CountdownContainer extends React.Component {
     return (
       <div id="countdown">
         <div id="tiles" className="labels">
-			<div className="holder">
-				<span>{this.state.timeLeft.days}</span><br /><br />
-				<p>Days</p>
-			</div>
-			<div className="holder">
-				<span>{this.state.timeLeft.hours}</span><br /><br />
-				<p>Hours</p>
-			</div>
-			<div className="holder">
-				<span>{this.state.timeLeft.minutes}</span><br /><br />
-				<p>Minutes</p>
-			</div>
-			<div className="holder">
-				<span>{this.state.timeLeft.seconds}</span><br /><br />
-				<p>Seconds</p>
-			</div>
+          <div className="holder">
+            <span>{this.state.timeLeft.days}</span><br /><br />
+				    <p>Days</p>
+			    </div>
+			    <div className="holder">
+				    <span>{this.state.timeLeft.hours}</span><br /><br />
+				    <p>Hours</p>
+			    </div>
+			    <div className="holder">
+				    <span>{this.state.timeLeft.minutes}</span><br /><br />
+				    <p>Minutes</p>
+			    </div>
+			    <div className="holder">
+				    <span>{this.state.timeLeft.seconds}</span><br /><br />
+				    <p>Seconds</p>
+			    </div>
         </div>
       </div>
     );
