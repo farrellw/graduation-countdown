@@ -55,7 +55,8 @@ body{
 
 .holder {
 	max-width: 25%;
-	max-height: 25%;
+	min-width: 75px;
+	height: 25%;
 	display: inline-block;
 }
 
@@ -65,7 +66,7 @@ body{
 }
 
 #countdown #tiles span{
-	max-width: 92px;
+	width: 80%;
 	font: bold 48px 'Droid Sans', Arial, sans-serif;
 	text-align: center;
 	color: #111;
