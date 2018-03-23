@@ -43,7 +43,7 @@ export default class CountdownContainer extends React.Component {
 
   render(){
     return (
-      <div id="countdown">
+      <div id="countdown" className="container">
         <div id="tiles" className="labels">
           <div className="holder">
             <span>{this.state.timeLeft.days}</span><br /><br />
