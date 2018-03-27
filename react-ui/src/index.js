@@ -2,7 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import AppContainer from './containers/AppContainer';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import registerServiceWorker from './registerServiceWorker';
+import CountdownActions from './data/CountdownActions';
+
+CountdownActions.addPhrase('Hi');
+CountdownActions.addPhrase('HO');
+
+ReactDOM.render(<AppContainer />, document.getElementById('root'));
 registerServiceWorker();
