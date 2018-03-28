@@ -1,0 +1,12 @@
+button {
+  color: #4CAF50;
+}
+
+form {
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.motivation-button {
+  margin-bottom: 20px;
+}
