@@ -13,9 +13,7 @@ class App extends React.Component {
                     <h1 className="App-title">Brown School Graduation 2018</h1>
                 </header>
                 <CountdownContainer date={this.props.date}/>
-                <div>
-                    <MotivationContainer phrases={this.props.phrases}/>
-                </div>
+                <MotivationContainer phrases={this.props.phrases}/>
             </div>
         );
     }

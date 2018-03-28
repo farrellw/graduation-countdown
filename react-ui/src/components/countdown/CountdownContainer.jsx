@@ -1,4 +1,5 @@
 import React from "react";
+import NumberHolder from './NumberHolder.jsx';
 import './countdown.css';
 
 export default class CountdownContainer extends React.Component {
@@ -44,26 +45,14 @@ export default class CountdownContainer extends React.Component {
 
   render(){
     return (
-      <div id="countdown" className="container">
-        <div id="tiles" className="labels">
-          <div className="holder">
-            <span>{this.state.timeLeft.days}</span><br /><br />
-				    <p>Days</p>
-			    </div>
-			    <div className="holder">
-				    <span>{this.state.timeLeft.hours}</span><br /><br />
-				    <p>Hours</p>
-			    </div>
-			    <div className="holder">
-				    <span>{this.state.timeLeft.minutes}</span><br /><br />
-				    <p>Minutes</p>
-			    </div>
-			    <div className="holder">
-				    <span>{this.state.timeLeft.seconds}</span><br /><br />
-				    <p>Seconds</p>
-			    </div>
-        </div>
-      </div>
+		<div id="countdown" className="container">
+			<div id="tiles" className="labels">
+				<NumberHolder value={this.state.timeLeft.days} label="Days"/>
+				<NumberHolder value={this.state.timeLeft.hours} label="Hours"/>
+				<NumberHolder value={this.state.timeLeft.minutes} label="Minutes"/>
+				<NumberHolder value={this.state.timeLeft.seconds} label="Seconds"/>
+			</div>
+		</div>
     );
   }
 }

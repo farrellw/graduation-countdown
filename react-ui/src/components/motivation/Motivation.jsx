@@ -25,7 +25,7 @@ export default class Motivation extends React.Component {
 
     render(){
       return (
-        <button className='btn btn-info' onClick={this.alertMotivation.bind(this)} onTouchEnd={this.alertMotivation.bind(this)}>Motivation Button</button>
+        <button className='btn btn-info motivation-button' onClick={this.alertMotivation.bind(this)} onTouchEnd={this.alertMotivation.bind(this)}>Motivation Button</button>
       )
     }
 }
