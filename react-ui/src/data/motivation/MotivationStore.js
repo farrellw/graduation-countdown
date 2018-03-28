@@ -24,6 +24,7 @@ class MotivationStore extends ReduceStore {
 				return state.set(id, new Phrase({
 					id,
 					text: action.text,
+					author: action.author || 'Anonymous',
 				}));
 			default:
 				return state;

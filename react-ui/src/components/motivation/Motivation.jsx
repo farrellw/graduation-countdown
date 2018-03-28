@@ -9,18 +9,18 @@ export default class Motivation extends React.Component {
         MotivationActions.addPhrase('Way to go!!');
     }
 
-
     alertMotivation(e){
-      e.preventDefault();
-      var message;
+        e.preventDefault();
+        var message;
 
-      if(this.props.phrases && this.props.phrases.size > 0){
-        var randomIndex = Math.floor(Math.random() * this.props.phrases.size) + 1;
-        message = this.props.phrases.get('id-' + randomIndex).text;
-      } else {
-        message = 'Nobody has added anything motivating lately.'
-      }
-      alert(message);
+        if (this.props.phrases && this.props.phrases.size > 0) {
+            var randomIndex = Math.floor(Math.random() * this.props.phrases.size) + 1;
+            var phrase = this.props.phrases.get('id-' + randomIndex);
+            message = phrase.text + ". By: " + phrase.author;
+        } else {
+            message = 'Nobody has added anything motivating lately.'
+        }
+        alert(message);
     }
 
     render(){
