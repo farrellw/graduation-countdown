@@ -44,7 +44,7 @@ export default class Form extends React.Component{
 		return (
 			<form onSubmit={this.onSubmit.bind(this, this.props.fields)}>
 				{this.props.fields.map((field) =>
-					<Input inputValue={this.state[field.label]} label={field.label} onChange={this.onTextChange.bind(this, field.label)} key={field.label}/>
+					<Input field={field} inputValue={this.state[field.label]} onChange={this.onTextChange.bind(this, field.label)} key={field.label}/>
 				)}
 				<button type="submit" className="btn btn-primary">Submit</button>
 			</form>
