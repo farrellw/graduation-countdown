@@ -1,7 +1,6 @@
 import {ReduceStore} from 'flux/utils';
 import CountdownActionTypes from './CountdownActionTypes';
 import Dispatcher from '../Dispatcher';
-import Immutable from 'immutable';
 
 class CountdownStore extends ReduceStore {
 	constructor(){
