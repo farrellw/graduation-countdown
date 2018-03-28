@@ -1,13 +1,13 @@
 import Immutable from 'immutable';
 import {ReduceStore} from 'flux/utils';
-import CountdownActionTypes from './CountdownActionTypes';
-import CountdownDispatcher from './CountdownDispatcher';
+import MotivationActionTypes from './MotivationActionTypes';
+import MotivationDispatcher from './MotivationDispatcher';
 import Counter from './Counter';
 import Phrase from './Phrase';
 
-class CountdownStore extends ReduceStore {
+class MotivationStore extends ReduceStore {
 	constructor(){
-		super(CountdownDispatcher);
+		super(MotivationDispatcher);
 	}
 
 	getInitialState(){
@@ -16,7 +16,7 @@ class CountdownStore extends ReduceStore {
 
 	reduce(state, action){
 		switch(action.type) {
-			case CountdownActionTypes.ADD_PHRASE:
+			case MotivationActionTypes.ADD_PHRASE:
 				if(!action.text){
 					return state;
 				}
@@ -32,4 +32,4 @@ class CountdownStore extends ReduceStore {
 	}
 }
 
-export default new CountdownStore();
+export default new MotivationStore();

@@ -1,16 +1,17 @@
-import App from '../App';
+import App from '../App.jsx';
 import React from 'react';
 import {Container} from 'flux/utils';
-import TodoStore from '../data/CountdownStore';
+import MotivationStore from '../data/motivation/MotivationStore';
 
-class CounterContainer extends React.Component {
+
+class AppContainer extends React.Component {
 	static getStores() {
-		return [TodoStore];
+		return [MotivationStore];
 	}
 
 	static calculateState(prevState) {
 		return {
-			phrases: TodoStore.getState(),
+			phrases: MotivationStore.getState(),
 		};
 	}
 
@@ -19,5 +20,5 @@ class CounterContainer extends React.Component {
 	}
 }
 
-const container = Container.create(CounterContainer);
+const container = Container.create(AppContainer);
 export default container;

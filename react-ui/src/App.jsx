@@ -1,14 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import CountdownContainer from "./components/CountdownContainer.jsx";
-import EncouragementContainer from './components/EncouragementContainer.jsx';
+import CountdownContainer from "./components/countdown/CountdownContainer.jsx";
+import MotivationContainer from './components/motivation/MotivationContainer.jsx';
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="App">
@@ -18,7 +14,7 @@ class App extends React.Component {
                 </header>
                 <CountdownContainer />
                 <div>
-                    <EncouragementContainer phrases={this.props.phrases}/>
+                    <MotivationContainer phrases={this.props.phrases}/>
                 </div>
             </div>
         );
