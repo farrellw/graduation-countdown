@@ -7,7 +7,7 @@ export default class MotivationContainer extends React.Component{
 		return (
 			<div className="container" id="encouragement-container">
 				<Motivation phrases={this.props.phrases}/><br />
-				<TextInput></TextInput>
+				<TextInput id="textInput"></TextInput>
 			</div>
 		)
 	}

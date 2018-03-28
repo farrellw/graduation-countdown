@@ -5,7 +5,8 @@ export default class TextInput extends React.Component{
 	constructor(){
 		super();
 		this.state ={
-			inputValue: ""
+			inputValue: "",
+			author: "",
 		}
 	}
 

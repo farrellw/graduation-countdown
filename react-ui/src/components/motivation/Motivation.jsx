@@ -1,7 +1,15 @@
 import React from 'react';
 import './motivation.css'
+import MotivationActions from '../../data/motivation/MotivationActions';
 
 export default class Motivation extends React.Component {
+
+    componentDidMount(){
+        MotivationActions.addPhrase('So Close!!!');
+        MotivationActions.addPhrase('Way to go!!');
+    }
+
+
     alertMotivation(e){
       e.preventDefault();
       var message;

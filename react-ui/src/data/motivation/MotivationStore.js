@@ -1,13 +1,13 @@
 import Immutable from 'immutable';
 import {ReduceStore} from 'flux/utils';
 import MotivationActionTypes from './MotivationActionTypes';
-import MotivationDispatcher from './MotivationDispatcher';
+import Dispatcher from '../Dispatcher';
 import Counter from './Counter';
 import Phrase from './Phrase';
 
 class MotivationStore extends ReduceStore {
 	constructor(){
-		super(MotivationDispatcher);
+		super(Dispatcher);
 	}
 
 	getInitialState(){
@@ -24,7 +24,6 @@ class MotivationStore extends ReduceStore {
 				return state.set(id, new Phrase({
 					id,
 					text: action.text,
-					complete: false
 				}));
 			default:
 				return state;

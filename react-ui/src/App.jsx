@@ -12,7 +12,7 @@ class App extends React.Component {
                     <img src={logo} className="App-logo" alt="logo"/>
                     <h1 className="App-title">Brown School Graduation 2018</h1>
                 </header>
-                <CountdownContainer />
+                <CountdownContainer date={this.props.date}/>
                 <div>
                     <MotivationContainer phrases={this.props.phrases}/>
                 </div>

@@ -1,11 +1,11 @@
 import MotivationActionTypes from './MotivationActionTypes';
-import MotivationDispatcher from './MotivationDispatcher';
+import Dispatcher from '../Dispatcher';
 
 const Actions = {
 	addPhrase(text){
-		MotivationDispatcher.dispatch({
+		Dispatcher.dispatch({
 			type: MotivationActionTypes.ADD_PHRASE,
-			text
+			text,
 		})
 	}
 };
