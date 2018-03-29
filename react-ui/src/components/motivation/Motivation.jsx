@@ -5,8 +5,11 @@ import MotivationActions from '../../data/motivation/MotivationActions';
 export default class Motivation extends React.Component {
 
     componentDidMount(){
-        MotivationActions.addPhrase('So Close!!!');
-        MotivationActions.addPhrase('Way to go!!');
+        MotivationActions.addPhrase('Yah Yah Yah Yah Yah Yah!!!');
+        MotivationActions.addPhrase('Way to go!!!!!');
+        MotivationActions.addPhrase('Almost there!!!!', 'Will F.');
+        MotivationActions.addPhrase('Graduation is way closer now than it was a year and a half ago');
+        MotivationActions.addPhrase('Woooohooooooo');
     }
 
     alertMotivation(e){
