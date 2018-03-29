@@ -12,7 +12,7 @@ export default class MotivationContainer extends React.Component{
 	constructor(){
 		super();
 		this.fields = [
-			new Field({key: 'phrase', label: 'New Motivation Phrase', type: 'text'}),
+			new Field({key: 'phrase', label: 'Add Motivation Phrase', type: 'text'}),
 			new Field({key: 'author', label: 'Author', type: 'text'})
 		]
 	}
