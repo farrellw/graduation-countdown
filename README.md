@@ -4,7 +4,7 @@ Countdown application, done as a favor to countdown the days until Brown School 
 ## Software
 React and Express.  Makes use of design pattern flux. Project is connected to a postgres database, allowing persistance. (Postgres instead of MongoDB because heroku allows free Postgres plans).
 
-##Hosted
+## Hosted
 On heroku at https://graduation-countdown.herokuapp.com/
 
 ## Running the program
