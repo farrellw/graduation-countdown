@@ -3,6 +3,8 @@ import './motivation.css'
 import MotivationActions from '../../data/motivation/MotivationActions';
 import Alert from '../Alert.jsx';
 
+//TODO add see all phrases modal.
+//TODO allow deleting of phrases.
 export default class Motivation extends React.Component {
     constructor(props){
         super(props);
