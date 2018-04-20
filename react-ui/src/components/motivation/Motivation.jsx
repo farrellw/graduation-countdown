@@ -13,13 +13,22 @@ export default class Motivation extends React.Component {
         };
     }
 
-    componentDidMount(){
-        MotivationActions.addPhrase('Yah Yah Yah Yah Yah Yah!!!');
-        MotivationActions.addPhrase('Way to go!!!!!');
-        MotivationActions.addPhrase('Almost there!!!!', 'Will F.');
-        MotivationActions.addPhrase('Graduation is way closer now than it was a year and a half ago');
-        MotivationActions.addPhrase('Woooohooooooo');
-    }
+	componentDidMount() {
+		fetch('/api/phrases')
+			.then(res => {
+				return res.json()
+			})
+			.then(phrases => {
+				if(phrases && phrases.phrases){
+					phrases.phrases.forEach(function(phrase){
+						MotivationActions.addPhrase(phrase.text, phrase.author);
+					})
+				}
+			}).catch(err => {
+				console.log('Error');
+				console.log(err);
+			})
+	}
 
     alertMotivation(e){
         e.preventDefault();
@@ -39,7 +48,7 @@ export default class Motivation extends React.Component {
         this.setState({showing: true, alertMessage: message, alertAuthor: author});
 
         setTimeout(function(){
-            if(self.state.alertMessage == message){
+            if(self.state.alertMessage === message){
                 self.setState({showing: false, alertMessage: "", alertAuthor: ""});
             }
         }, 2000);

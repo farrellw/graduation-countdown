@@ -1,9 +1,21 @@
 const express = require('express');
 const path = require('path');
+var cors = require('cors');
+var pg = require('pg');
+var bodyParser = require('body-parser');
+var _ = require('underscore');
+
+require('dotenv').config();
 // const cluster = require('cluster');
 // const numCPUs = require('os').cpus().length;
 
 const PORT = process.env.PORT || 5000;
+const CONNECTION_STRING = process.env.DATABASE_URL;
+var maxId;
+var pool = new pg.Pool({
+  connectionString: CONNECTION_STRING,
+  ssl: true
+});
 
 // Multi-process to utilize all CPU cores.
 // if (cluster.isMaster) {
@@ -19,23 +31,73 @@ const PORT = process.env.PORT || 5000;
 //   });
 //
 // } else {
-  const app = express();
+const app = express();
 
-  // Priority serve any static files.
-  app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
+app.set('port', PORT);
+// Priority serve any static files.
+app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
+app.use(cors());
+app.use(bodyParser.json());
+// Answer API requests.
+app.get('/api', function (req, res) {
+  res.set('Content-Type', 'application/json');
+  res.send('{"message":"Hello from the custom server!"}');
+});
 
-  // Answer API requests.
-  app.get('/api', function (req, res) {
-    res.set('Content-Type', 'application/json');
-    res.send('{"message":"Hello from the custom server!"}');
-  });
+app.get('/api/phrases', function(req, res){
+  pool.connect(function(err, client, done){
+    client.query("SELECT * FROM PhraseTable", function(err, result){
+      done();
+      if(err){
+        console.log('Error', err);
+        return res.json({error: err});
+      }
+      console.log('Success in phrases');
 
-  // All remaining requests return the React app, so it can handle routing.
-  app.get('*', function(request, response) {
-    response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
-  });
+      let largestRow = _.max(result.rows, function(phrase){ return parseInt(phrase.id); });
+      if(largestRow && largestRow.id){
+        maxId = parseInt(largestRow.id);
+      }
+      console.log('The max id is', maxId);
+      res.json({phrases: result.rows});
+    })
+  })
+});
 
-  app.listen(PORT, function () {
-    console.error(`Node cluster worker ${process.pid}: listening on port ${PORT}`);
-  });
-// }
+app.post('/api/phrases', function(req, res){
+  if(!_.isNumber(maxId)){
+    return res.json({error: {message: 'Could not parse a max id'}});
+  }
+
+  let body = req.body;
+
+  pool.connect(function(err, client, done){
+    let phrase = body.phrase || '';
+    let author = body.author || 'Anonymous';
+    maxId += 1;
+    let query = "INSERT INTO PhraseTable (id, text, author) VALUES (" + maxId + ", '" + phrase + "', '" + author + "')";
+
+    console.log('Insert query:', query);
+
+    client.query(query, function(err, result){
+      done();
+      if(err){
+        console.log('Error', err);
+        return res.json({error: err});
+      }
+
+      console.log('Success in post');
+      res.json({});
+    })
+  })
+});
+//
+// All remaining requests return the React app, so it can handle routing.
+app.get('*', function (request, response) {
+  response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
+});
+
+app.listen(PORT, function () {
+
+});
+
