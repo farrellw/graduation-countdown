@@ -11,7 +11,6 @@ require('dotenv').config();
 
 const PORT = process.env.PORT || 5000;
 const CONNECTION_STRING = process.env.DATABASE_URL;
-var maxId;
 var pool = new pg.Pool({
   connectionString: CONNECTION_STRING,
   ssl: true
@@ -52,32 +51,20 @@ if (cluster.isMaster) {
           console.log('Error', err);
           return res.json({error: err});
         }
-        console.log('Success in phrases');
-
-        let largestRow = _.max(result.rows, function (phrase) {
-          return parseInt(phrase.id);
-        });
-        if (largestRow && largestRow.id) {
-          maxId = parseInt(largestRow.id);
-        }
-        console.log('The max id is', maxId);
+        console.log('Select all succeeded in phrase table');
+;
         res.json({phrases: result.rows});
       })
     })
   });
 
   app.post('/api/phrases', function (req, res) {
-    if (!_.isNumber(maxId)) {
-      return res.json({error: {message: 'Could not parse a max id'}});
-    }
-
     let body = req.body;
 
     pool.connect(function (err, client, done) {
       let phrase = body.phrase || '';
       let author = body.author || 'Anonymous';
-      maxId += 1;
-      let query = "INSERT INTO PhraseTable (id, text, author) VALUES (" + maxId + ", '" + phrase + "', '" + author + "')";
+      let query = "INSERT INTO PhraseTable (text, author) VALUES ('" + phrase + "', '" + author + "')";
 
       console.log('Insert query:', query);
 
