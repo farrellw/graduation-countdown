@@ -9,6 +9,7 @@
     "immutable": "^3.8.2",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
+    "react-bootstrap-dialog": "^0.10.0",
     "react-bootstrap-modal": "^4.0.0",
     "react-dom": "^16.2.0",
     "react-modal": "^3.3.2",

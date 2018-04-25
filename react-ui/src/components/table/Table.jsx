@@ -11,13 +11,16 @@ export default class MyTable extends React.Component {
 	render(){
 		let phrases = [];
 
-		for(var i = 1; i <= this.props.phrases.size; i++){
+		for(var i = 1; i <= (this.props.phrases.size + 100); i++){
 			var phrase = {};
 			var mappedPhrase = this.props.phrases.get('id-' + i);
-			phrase.id = i;
-			phrase.message = mappedPhrase.text;
-			phrase.author = mappedPhrase.author;
-			phrases.push(phrase);
+			if(mappedPhrase){
+				phrase.id = i;
+				phrase.message = mappedPhrase.text;
+				phrase.author = mappedPhrase.author;
+				phrase.databaseId = mappedPhrase.databaseId;
+				phrases.push(phrase);
+			}
 		}
 
 		return (
@@ -34,8 +37,8 @@ export default class MyTable extends React.Component {
 					<tbody>
 					{
 						_.map(phrases, function(phrase){
-							return <TableItem key={phrase.id} phrase={phrase}/>
-						})
+							return <TableItem key={phrase.id} phrase={phrase} password={this.props.password}/>
+						}, this)
 					}
 					</tbody>
 

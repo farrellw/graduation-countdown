@@ -9,7 +9,8 @@ export default class MyModal extends React.Component {
 		super(props);
 		this.state = {
 			title1: DEFAULT_TITLE,
-			open: false
+			open: false,
+			password: ''
 		};
 
 	}
@@ -22,6 +23,11 @@ export default class MyModal extends React.Component {
 		this.setState({open: true});
 	}
 
+	inputChanged = e => {
+		e.preventDefault();
+		this.setState({password: e.target.value})
+	}
+
 	render(){
 		return (
 			<div>
@@ -32,9 +38,11 @@ export default class MyModal extends React.Component {
 							<Modal.Title>All Motivational Phrases</Modal.Title>
 						</Modal.Header>
 						<Modal.Body>
-							<MyTable phrases={this.props.phrases}/>
+							<MyTable phrases={this.props.phrases} password={this.state.password}/>
 						</Modal.Body>
 						<Modal.Footer>
+							<label>Admin Password</label><br/>
+							<input id="password" type="text" onChange={this.inputChanged.bind(this)}/><br/><br/>
 							<Modal.Dismiss className='btn btn-default'>Close</Modal.Dismiss>
 						</Modal.Footer>
 					</Modal>
