@@ -25,7 +25,10 @@ class MotivationStore extends ReduceStore {
 					id,
 					text: action.text,
 					author: action.author || 'Anonymous',
+					databaseId: action.id || id,
 				}));
+			case MotivationActionTypes.DELETE_PHRASE:
+				return state.delete('id-' + action.id);
 			default:
 				return state;
 		}

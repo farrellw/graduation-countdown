@@ -22,7 +22,7 @@ export default class Motivation extends React.Component {
 			.then(phrases => {
 				if(phrases && phrases.phrases){
 					phrases.phrases.forEach(function(phrase){
-						MotivationActions.addPhrase(phrase.text, phrase.author);
+						MotivationActions.addPhrase(phrase.text, phrase.author, phrase.id);
 					})
 				}
 			}).catch(err => {
@@ -39,8 +39,10 @@ export default class Motivation extends React.Component {
         if (this.props.phrases && this.props.phrases.size > 0) {
             var randomIndex = Math.floor(Math.random() * this.props.phrases.size) + 1;
             var phrase = this.props.phrases.get('id-' + randomIndex);
-            message = phrase.text;
-            author = phrase.author;
+			if(phrase){
+				message = phrase.text;
+				author = phrase.author;
+			}
         } else {
             message = 'Nobody has added anything motivating lately.'
         }
