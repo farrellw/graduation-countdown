@@ -64,11 +64,11 @@ if (cluster.isMaster) {
     pool.connect(function (err, client, done) {
       let phrase = body.phrase || '';
       let author = body.author || 'Anonymous';
-      // let query = "INSERT INTO PhraseTable (text, author) VALUES ('" + phrase + "', '" + author + "')";
-	  //
-      // console.log('Insert query:', query);
-	  //
-      // client.query(query, function (err, result) {
+      let query = "INSERT INTO PhraseTable (text, author) VALUES ('" + phrase + "', '" + author + "')";
+
+      console.log('Insert query:', query);
+
+      client.query(query, function (err, result) {
         done();
         if (err) {
           console.log('Error', err);
@@ -77,7 +77,7 @@ if (cluster.isMaster) {
 
         console.log('Success in post');
         res.json({});
-      // })
+      })
     })
   });
 
@@ -88,14 +88,14 @@ if (cluster.isMaster) {
       let query = "DELETE FROM PhraseTable WHERE id='" + phraseId + "'";
       console.log(query);
       client.query(query, function (err, result) {
-      done();
-      if (err) {
-        console.log('Error', err);
-        return res.json({error: err});
-      }
+        done();
+        if (err) {
+          console.log('Error', err);
+          return res.json({error: err});
+        }
 
-      console.log('Success in delete');
-      res.json({});
+        console.log('Success in delete');
+        res.json({});
       })
     })
   });

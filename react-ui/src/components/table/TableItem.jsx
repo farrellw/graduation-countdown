@@ -32,6 +32,7 @@ export default class TableItem extends React.Component {
 				},
 				method: 'DELETE',
 			}).then(function(done){
+				self.props.clearFunction();
 				MotivationActions.deletePhrase(self.props.phrase.id);
 			}).catch(function(err){
 				console.log('Error');

@@ -37,7 +37,7 @@ export default class MyTable extends React.Component {
 					<tbody>
 					{
 						_.map(phrases, function(phrase){
-							return <TableItem key={phrase.id} phrase={phrase} password={this.props.password}/>
+							return <TableItem key={phrase.id} phrase={phrase} password={this.props.password} clearFunction={this.props.clearFunction}/>
 						}, this)
 					}
 					</tbody>
