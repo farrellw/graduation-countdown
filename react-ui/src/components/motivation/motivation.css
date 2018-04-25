@@ -10,3 +10,7 @@ form {
 .motivation-button {
   margin-bottom: 20px;
 }
+
+.modal {
+  display: block;
+}

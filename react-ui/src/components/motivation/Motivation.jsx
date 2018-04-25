@@ -3,7 +3,6 @@ import './motivation.css'
 import MotivationActions from '../../data/motivation/MotivationActions';
 import Alert from '../Alert.jsx';
 
-//TODO add see all phrases modal.
 //TODO allow deleting of phrases.
 export default class Motivation extends React.Component {
     constructor(props){
@@ -35,7 +34,6 @@ export default class Motivation extends React.Component {
     alertMotivation(e){
         e.preventDefault();
         var message;
-        var self = this;
         var author = "";
 
         if (this.props.phrases && this.props.phrases.size > 0) {
@@ -48,12 +46,6 @@ export default class Motivation extends React.Component {
         }
 
         this.setState({showing: true, alertMessage: message, alertAuthor: author});
-
-        setTimeout(function(){
-            if(self.state.alertMessage === message){
-                self.setState({showing: false, alertMessage: "", alertAuthor: ""});
-            }
-        }, 2000);
     }
 
     render(){

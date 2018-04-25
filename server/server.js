@@ -52,7 +52,7 @@ if (cluster.isMaster) {
           return res.json({error: err});
         }
         console.log('Select all succeeded in phrase table');
-;
+
         res.json({phrases: result.rows});
       })
     })
