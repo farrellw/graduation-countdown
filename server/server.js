@@ -52,7 +52,7 @@ if (cluster.isMaster) {
           return res.json({error: err});
         }
         console.log('Select all succeeded in phrase table');
-;
+
         res.json({phrases: result.rows});
       })
     })
@@ -64,11 +64,11 @@ if (cluster.isMaster) {
     pool.connect(function (err, client, done) {
       let phrase = body.phrase || '';
       let author = body.author || 'Anonymous';
-      let query = "INSERT INTO PhraseTable (text, author) VALUES ('" + phrase + "', '" + author + "')";
-
-      console.log('Insert query:', query);
-
-      client.query(query, function (err, result) {
+      // let query = "INSERT INTO PhraseTable (text, author) VALUES ('" + phrase + "', '" + author + "')";
+	  //
+      // console.log('Insert query:', query);
+	  //
+      // client.query(query, function (err, result) {
         done();
         if (err) {
           console.log('Error', err);
@@ -77,7 +77,7 @@ if (cluster.isMaster) {
 
         console.log('Success in post');
         res.json({});
-      })
+      // })
     })
   });
 //

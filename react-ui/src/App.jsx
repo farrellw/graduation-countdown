@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import CountdownContainer from "./components/countdown/CountdownContainer.jsx";
 import MotivationContainer from './components/motivation/MotivationContainer.jsx';
+import MyModal from './components/MyModal.jsx';
 
 class App extends React.Component {
     render() {
@@ -14,6 +15,8 @@ class App extends React.Component {
                 </header>
                 <CountdownContainer date={this.props.date}/>
                 <MotivationContainer phrases={this.props.phrases}/>
+                <br/>
+                <MyModal phrases={this.props.phrases}/>
             </div>
         );
     }
