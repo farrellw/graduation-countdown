@@ -48,12 +48,6 @@ export default class Motivation extends React.Component {
         }
 
         this.setState({showing: true, alertMessage: message, alertAuthor: author});
-
-        setTimeout(function(){
-            if(self.state.alertMessage === message){
-                self.setState({showing: false, alertMessage: "", alertAuthor: ""});
-            }
-        }, 2000);
     }
 
     render(){
