@@ -8,7 +8,7 @@ class CountdownStore extends ReduceStore {
   }
 
   getInitialState() {
-    return new Date("Oct 17, 2018 19:30:00");
+    return new Date("Jan 12, 2020 19:30:00");
   }
 
   reduce(state, action) {
